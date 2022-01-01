@@ -88,4 +88,27 @@ Mejorar la eficiencia y compartir recursos
 
 #### Impacto despliegue
 - Impacta sobre muchas cosas y por supuesto seguridad y privacidad
-- 
+
+
+
+## Modelo de interacción
+- Cuanto más compleja sea la comunicación, más vulnerabilidades puede tener, al haber entre otras cosas, más canales que controlar
+- En una interacción, siempre hay un proceso a, que envía sincrona o asíncronamente, un mensaje o un stream, y que puede quedar o no bloqueado hasta que a otro proceso b le responda, a través de un canal con un ancho de banda, un latencia y unos retardos.
+
+## Modelo de fallos
+- Como gestiona el sistema los fallos. 
+- Pero primero, que significa que falle el sistema. 
+- Por ejemplo, si a quiere enviar un mensaje a b, puede ocurrir, que b no responda o que no llegue el mensaje, lo cuál sería un fallo por omisión de la respuesta. Que esta respuesta tarde demasiado, lo cual sería un fallo por temporización, timeout o cualquier otro fallo, que a priori no sabemos porque pasa, fallo arbitrario.
+-  Estudiar esto, es importante, para crear servicios y contramedidas por si algo de esto pasa.
+
+## Modelo de seguridad
+
+- En un sistema distribuido, su seguridad depende mucho de la propia arquitectura de este, pero es imprescindible, la creación de un modelo de seguridad que describa las posibles amenazas y soluciones. Este depende mucho de la política de seguridad, de esta forma, dependiendo de esta será más o menos completo.
+- Hemos dicho que el modelo de seguridad describe amenazas, pero cuales son estas amenazas:
+- Pueden haber amenazas a los procesos, a los canales de comunicación o a los recursos que gestionan y comparten.
+- Por tanto, el modelo de seguridad, se basa en emodelas al enemigo, desde las etapas iniciales del desarrollo, y modelar medidas de seguridad o contramedidas.
+- Este es un componente de obligatorio uso más, sin embargo a veces no se tiene en cuenta.
+
+## Modelo de red
+- En su interacción, los modelos usan redes para comunicarse, que son susceptibles a ataques y hay muchos tipos de redes, protocolos, modelos, como el modelo osi.
+- Ataques genéricos, como escuchas, suplantación, modificación, DoS
