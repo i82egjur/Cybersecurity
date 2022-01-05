@@ -96,7 +96,8 @@ del otro, Alice and bob puede computar una clave secreta compartida a partir de 
 
 # Aplicaciones httpos, 
 
-
+# Trusted timestamp
+- Se usa para demostrar que algo se ha hecho antes de un determinado punto en el tiempo, se utiliza para transacciones, aporte de pruebas legales, para ello, se coge la información y se calcula su hash y se envía a una entidad que certifique que eso ha llegado en ese momento, para dejar evidencia de ello, concatena al hash recivido, el timestamp y calcula el hash de ambos, posteriormente, lo devuelve junto al timestamp, el emisor primero, deberá de almacenar esto junto a los datos que se querían probar.
 
 
 
