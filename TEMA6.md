@@ -126,7 +126,34 @@ s-boxes, se cambian filas, mezclan columnas y se suma la subclave i, en la 10 ro
 
 # Stream cipher
 
+- Basado en one-time pad, se generan nuevas claves en cada paso a partir de una semilla, que sirve de clave. Produce en cada paso una salida cifrada. Más rapidos y menos complejidad software y hardware.
 
+
+
+## Lorenz chipher
+- Lorenz sz40, sz42a y sz42b fueron maquinas de cifrado de stream con rotores, fueron usados por el ejercito aleman en la segunda guerra mundial
+
+## RC4
+- El creado por Ron Rivest, 1987, fue un de los más usados, con una clave de entre 8-2948b. Es muy eficiente, se usa en ssl/stl, en wep, wpa... Para una buena implementación y claves mayores de 128b no hay ataques
+
+## Modos de operación block cipher
+- Se busca hacer más eficiente el cifrado de bloque, haciendo stream cipher con un block cipher, para ello, tenemos los siguientes tipos:
+1. EBC Electronic code book, bloques de 64b con la misma clave, debilidad, si consideramos todos los bloques, podemos comprobar si hay regularidades y así extraer el texto plano a partir del ciifrado.
+
+3. CBC cipher block chaining.  Se hace xor al bloque anterior, evita la presencia de regularidades, nunca entrada es igual a otra.
+4. CFB cipher feed back Convierte block cipher en un stream cipher, se hace en bucle, encripta el vector, los s primeros bits del vector se xorizan con Pl para obtener c1, El vector inicial se modifica insertandole c1 al final desplazando sbits a la izq. 
+5. OFB output feedback Variante de cfb, se crea un vector  inicial, que en bucle, se encripta, los s primeros bits, hacen xor con p1 para obtener c1, iv se modifica insertandole los s primeros bits de ive
+6. CTR Counter, se usa un contador de tamaño igual al bloque, se xoriza con pi y se cifra para obtener ci
+
+
+## Ubicación de los dispositivos de cifrado
+- Hay que considerar que encriptar y donde encriptar, encriptación de enlace o encriptación extremo a extremo
+
+### Link encription
+- Se encripta en la conexión entre cada dos nodos, por esto, cuando sale se encripta y cuando llega se desencripta, haciendo que cada nodo sea vulnerable potencialmente. En cada link se tiene que usar una clave distinta. Esta forma de cifrar hace que las conexiones sean muy seguras pero tmb muy costosas por la cantidad de cifrado que hace falta.
+
+### End-to-end encryption
+- Solo encryptan los nodos extremos que comparten una clave, solo se encripta los datos de aplicación no los de enrutamiento. 
 
 
 
