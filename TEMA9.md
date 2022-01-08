@@ -88,3 +88,120 @@ VPN, NAT, otros elementos, como identificar/controlar aplicaciones, usuarios y t
 ## Screnned host
 - Screening router + host especialmente securizado(bastion host)
 - casas y pymes
+- El screening router controla las conexiones de la red interna, y el bastion host puede hacer de proxy, para redes pequeñas / con poco tráfico
+- Si cae el bastion estamos expuestos.
+
+## Screened subnet
+- Compuesto de un router exterior, y un router interior, de forma que se crea una red perimetral, con un bastion host dentro, de forma que aunque esté más expuesto y pueda caer, está aislado de la red interna.
+
+- Medianas y grandes infraestructuras de red
+
+
+## Multiple bastion hosts
+- Igual que el anterior, pero con varios hosts en la red perimetral. Al haber 2, se aumenta el balanceo de carga, y por ende el rendimiento, además que permite añadir redundancia.
+
+## Mezcla router interior/exterior
+- Emula a la screened subnet, pero con solo un router que hace las veces de router exterior e interior y el bastion host en la red perimetral que se sigue creando. Solo se puede dar, si el router es capaz. Sencillez sin perder seguridad.
+
+## Bastion con router exterior
+- En cuanto a seguridad es equivalente a la screened subnet con 2 routers, ya que hay un router exterior que esta mezclado con router exterior. Buena seguridad, pero no admite mucho tráfico
+
+## Bastion con ruter interior
+- No recomendable
+- No es equivalente a 2 routers
+- Tráfico interno no protegido
+
+## Multiples routers internos.
+- NO recomendable, dificultad de doble configuración
+- Puede haber trafido interno-red perimetral-interno y ser esnifado
+- Dos sitios por donde salir, routers internos son muy importantes
+
+## Multiples redes internas 1 router
+- Organización por sectores
+- No mezcla el tráfico
+- Añade capa de seguridad
+
+## Multiples redes 2
+- 1 router interno no es suficiente, cada departamento su propia red perimetral con su router
+
+## Multiples routers externos
+- 1 router externo no es suficiente
+
+## Multiples routers externos 2
+- Varias redes perimetrales. 1 para internet, 1 para clientes, 1 para hospedaje, otra para red interna, etc.
+
+## Firewalls internos
+- Laboratorios
+- Hay unas redes internas más seguras que otraws
+- Redes internas de alta seguridad.
+
+
+## Previo a la implantación de un firewall conviene analizar diversos aspectos
+- Definir las necesidades, servicios, nivel de seguridad, ancho de bamda, autitabilidad, disponibilidad, presupuesto, personal...
+
+## Evaluando los productos del mercado
+- Precio
+- Hardware
+- Software
+- Tipo de licencias
+- Instalación/Configuración/Mantenimiento
+- Actualizaciones
+- Asistencia y soporte técnico
+
+## Variedad de hardware
+- Pequeño dispositivo router/firewall
+- Host/servidor
+- Appliances/network appliances
+- Racks
+- Cloud security
+
+## Características/funcionalidad mínima
+- Fácil configuración, permitir reglas, aplicarlas. Registrar y diferenciar el tráfico. Capacidad para probar y validar, soporte, actualizaciones, documentación.
+
+## Proxy vs filtrado
+- Operacionez que requienen conocimiento detallado del protocolo y segimiento prolongado de eventos es mejor en sistemas proxy
+- Operaciones simples y rápidas sobre paquetes individuales, mejor filtro de paquetes. Aunque hay cosas que solo pueden hacer los filtros de paquetes, aplicar reglas generales sobre paquetes mal formado ,bloquear ciertos paquetes, son más fáciles de asegurar.
+
+### Filtrado básico
+- No hace nada en base a los datos, solo en base a la cabecera. 
+
+### Filtrado dinámico
+- Seguimiento del estado de una conexión
+- Detectar patrones
+- Hay diferentes niveles de seguimiento
+- Aumentan bastante la carga
+
+### Aspectos prácticos del filtrado de paquetes
+- Por defecto permitir o denegar
+- Strategia del menor privilegio
+- Acciones del router
+  - Accept, pass, permit
+  - Drop, deny
+- Loggin actions
+- Error codes
+
+### Convenciones en las reglas
+- El filtro va regla a regla hasta hacer match
+- Si no hace match, hace política por defecto.
+
+## UTM
+- Unified Threat Management
+- Siguiente generación de FW
+- Se trata de integrar todo en un dispositivo
+- FW, Anti-virus, spam, balanceo de carga, filtro de contenidos, detección de intrusos, perdida de datos
+- Son las tecnologías fw en un único dispositivo
+
+- Ventajas, reducir la complejidad
+- Desventajas, único punto de error, compromiso si hay vulnerabilidades, impacto en la latencia, poca escalabilidad.
+
+## Netfilter/iptables
+- Packet filtering framework
+
+## Otros elementos
+- Bastion hosts
+- Intrusion Detection Systems, Deteción de intrusos, con sensores, analizadores, Network based, o host based, es complejo usarlos, usan honeypots.
+
+- Intrusion Prevention Systems, reactivos, muchos más ventajosos que ids, actuan antes de producirse el mal
+
+- SNORT
+
