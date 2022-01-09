@@ -28,3 +28,15 @@ proceden a cifrar/descifrar los mensajes del otro de manera sincrona, que es muc
 ## IP sec
 - Ip security protocol
 - Está definido por un estandard abierto de IETF, Provee, autenticación, integridad y privacidad entre 2 entidades ip
+- Se implementa a nivel de kernel sobre la capa IP, usa encriptación simétrica, que usa IKE, Internet Key Exchange para intercambiarse las claves de forma segura.
+- Es similar a ssl/tls, e excepción de que ssl se implementa en la capa de aplicación y es algo más fácil de usar, pero ip sec es más seguro.
+- El objetivo es securizar cualquier aplicación, de manera que se de Autenticación, control de acceso, integridad, confidencialidad, protección, y flexibilidad.
+- Esta compuesto de 2 protocolos, un Authentication header (AH), garantiza integridad y autenticación. y un ESP, Encapsulating Security Payload, garantiza confidencializad, aunque también integridad y confidencialidad, al ser cifrado de forma simétrica. Así como 1 método de intercambio
+seguro de claves, ISAKMP, Internet Security Association Key Management Protocol. 
+- Ipsec tiene 2 modos de operación
+  - Transporte y tunel. Las diferencias son el nivel de protección que aportan, en transporte, se securizan los datos, en tunel se securiza todo el paquete ip original, encapsulandolo en otro paquete ip.
+
+
+## SSH
+- Su nombre refleja muchas cosas, comando, empresa un protocolo.
+- Conversación completa encriptada, incluida las autenticaciones de usuario, ssh, tras establecer una conexión, se usa como túnel para cualquier otra conexión TCP. Su seguridad radica en que cliente y servidor negocian, algoritmos de encriptación, metodo de intercambio de claves, mecanismos de comprobación de integridad. Es similar a ssl/tls, tanto que la v2 de ssh lo implementaba. El servidor controla los tiempos cambiando los parámetros cada cierto tiempo.    
